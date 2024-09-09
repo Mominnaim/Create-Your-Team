@@ -1,0 +1,15 @@
+This will be our project, and we will focus on this until we finish it.
+I do not care how long this takes, but We will get this done.
+
+So essentially there will be a 
+
+1. Sign up/Login page
+2. Backpack creation
+    to store the pokemon
+3. Search bar for finding the pokemon
+
+Lets start with the initial page --> What will be on it.
+
+The User has the option to sign up if they want to save their data
+Otherwise they can just create a bagpack and start to add pokemon in it.
+

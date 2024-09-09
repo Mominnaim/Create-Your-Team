@@ -1,0 +1,7 @@
+August 31st
+-> Create Login page
+-> Stretch GIF if Possible\
+
+September 8th 
+-> Change all the api routes into asynchronous functions
+
