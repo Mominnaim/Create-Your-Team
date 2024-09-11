@@ -3,65 +3,69 @@ const bcrypt = require('bcryptjs')
 
 const signup = async (req, res) => {
     console.log("Attempting to sign in");
-    let { username, email, password } = req.body;
+    let { username, email, password, confirmPassword } = req.body;
 
-    // Find user by email
-    User.find({ email })
-        .then((result) => {
-            console.log("Attempting to CREATE AN ACCOUNT");
-            if (result.length) {
-                console.log("Email already exists");
-                // The User already exists
+    if (password === confirmPassword){
+        // Find user by email
+        User.find({ email })
+            .then((result) => {
+                console.log("Attempting to CREATE AN ACCOUNT");
+                if (result.length) {
+                    console.log("Email already exists");
+                    // The User already exists
+                    return res.json({
+                        status: "FAILED",
+                        message: "User with this email has already been created",
+                    });
+                } else {
+                    // Try to create a new user
+
+                    // Password handling
+                    const saltRounds = 10;
+                    bcrypt
+                        .hash(password, saltRounds)
+                        .then((HashedPassword) => {
+                            const newUser = new User({
+                                username,
+                                email,
+                                password: HashedPassword,
+                            });
+                            newUser
+                                .save()
+                                .then((result) => {
+                                    console.log("NEW USER HAS BEEN CREATED");
+                                    return res.json({
+                                        status: "SUCCESS",
+                                        message: "Sign up has been successful",
+                                        data: result,
+                                    });
+                                })
+                                .catch((e) => {
+                                    console.error(e, "An error occurred while saving the password.");
+                                    return res.json({
+                                        status: "FAILED",
+                                        message: "An error occurred while saving the user",
+                                    });
+                                });
+                        })
+                        .catch((e) => {
+                            return res.json({
+                                status: "FAILED",
+                                message: "There was a problem with the password",
+                            });
+                        });
+                }
+            })
+            .catch((e) => {
+                console.log("NEW USER COULD NOT BE CREATED");
                 return res.json({
                     status: "FAILED",
-                    message: "User with this email has already been created",
+                    message: "An error has occurred with the sign-in attempt",
                 });
-            } else {
-                // Try to create a new user
-
-                // Password handling
-                const saltRounds = 10;
-                bcrypt
-                    .hash(password, saltRounds)
-                    .then((HashedPassword) => {
-                        const newUser = new User({
-                            username,
-                            email,
-                            password: HashedPassword,
-                        });
-                        newUser
-                            .save()
-                            .then((result) => {
-                                console.log("NEW USER HAS BEEN CREATED");
-                                return res.json({
-                                    status: "SUCCESS",
-                                    message: "Sign up has been successful",
-                                    data: result,
-                                });
-                            })
-                            .catch((e) => {
-                                console.error(e, "An error occurred while saving the password.");
-                                return res.json({
-                                    status: "FAILED",
-                                    message: "An error occurred while saving the user",
-                                });
-                            });
-                    })
-                    .catch((e) => {
-                        return res.json({
-                            status: "FAILED",
-                            message: "There was a problem with the password",
-                        });
-                    });
-            }
-        })
-        .catch((e) => {
-            console.log("NEW USER COULD NOT BE CREATED");
-            return res.json({
-                status: "FAILED",
-                message: "An error has occurred with the sign-in attempt",
             });
-        });
+    }else {
+        console.log('Password do not match')
+        }
 };
 
 

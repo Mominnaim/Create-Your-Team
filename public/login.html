@@ -8,17 +8,27 @@
 </head>
 <body>
     <div class="container">
-        <form id = "login" class="form form--hidden">
+        <!--  This is the login form if the user has not logged in      -->
+        <form id ="login" class="form form--hidden">
+                
+                <!--   This is the submission for the the login portion of it     -->
                 <h1 class = "form__title">Login</h1>
                 <div class="form__message form__message--error"></div>
                 <div class="form__input--group">
-                    <input type="text" class="form__input" autofocus placeholder="Username or Email">
+
+                    <!--  This is where the user enters their username   -->
+                    <input type="text" class="form__input form__input-username" autofocus placeholder="Username">
                     <div class="form__input-error-message"></div>
+
                 </div>
+
+                <!--  This is where the user enters their password   -->
                 <div class="form__input--group">
-                    <input type="password" class="form__input" autofocus placeholder="Password">
+                    <input type="password" class="form__input form__input-password" autofocus placeholder="Password">
                     <div class="form__input-error-message"></div>
                 </div>
+                
+                <!--  This is where the user submits the info  -->
                 <button class="form__button" type="submit">Continue</button>
                 <p class="form__text">
                     <a href = "#" class = "form__link"> Forgot your password</a>
@@ -26,32 +36,42 @@
                 <p class="form__text">
                     <a id = "linkCreateAccount" href="./" class="form__link">Dont't have an account yet? Create account</a>
                 </p>
+
         </form>
+
+
         <form id = "createAccount" class="form">
             <h1 class = "form__title">Create Account</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input--group">
-                <input type="text" id = "signupUsername" class="form__input" autofocus placeholder="Username">
+                <input type="text" id = "signupUsername" class="form__input form__input-username" autofocus placeholder="Username">
                 <div class="form__input-error-message"></div>
             </div>
+
             <div class="form__input--group">
-                <input type="text" class="form__input" autofocus placeholder="Email Address">
+                <input type="text" id = "Email" class="form__input" autofocus placeholder="Email Address">
                 <div class="form__input-error-message"></div>
             </div>
+
             <div class="form__input--group">
-                <input type="password" class="form__input" autofocus placeholder="Password">
+                <input type="password" id = "password" class="form__input form__input-password" autofocus placeholder="Password">
                 <div class="form__input-error-message"></div>
             </div>
+
             <div class="form__input--group">
-                <input type="text" class="form__input" autofocus placeholder="Confirm Password">
+                <input type="password" id="confirmPassword" class="form__input form__input-confirmPassword" autofocus placeholder="Confirm Password">
                 <div class="form__input-error-message"></div>
             </div>
+
             <button class="form__button" type="submit">Continue</button>
             <p class="form__text">
                 <a id = "linkLogin" href="./" class="form__link">Already have an account? Sign in</a>
             </p>
+
     </form>
+
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src = "login.js"></script>
 </body>
 </html>

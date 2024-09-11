@@ -1,4 +1,7 @@
+//This is the button that takes you to the login page
 const login = document.querySelector('.login-button')
+
+// 
 
 login.addEventListener("click", goToLoginPage)
 
