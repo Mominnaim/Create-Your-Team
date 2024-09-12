@@ -6,6 +6,7 @@ const inputPassword = document.querySelector('.form__input-password');
 const userConfirmPassword = document.querySelector('#confirmPassword')
 const userEmail = document.querySelector('#Email');
 const userUsername = document.querySelector('#signupUsername')
+const userPassword = document.querySelector('#password')
 
 
 console.log('Here I am')
@@ -94,7 +95,7 @@ createAccountForm.addEventListener('submit', async (e) => {
     console.log("I have been clicked create account")
     e.preventDefault();
     const username = userUsername.value;
-    const password = inputPassword.value;
+    const password = userPassword.value;
     const email = userEmail.value;
     const confirmPassword = userConfirmPassword.value;
 
