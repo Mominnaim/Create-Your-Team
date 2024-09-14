@@ -12,7 +12,7 @@ app.use(express.json())
 app.use('/user', UserRouter)
 
 
-const port = 8080;
+const port = 5000;
 
 const start = async () => {
     try{

@@ -22,6 +22,7 @@ const UserSchema = new Schema({
         required: [true, "Please provide email"],
         minLength: [5, "You need at least 5 characters for your password"]
     },
+    verified: Boolean
 });
 
 //* So the first argument is what the collection name will be but in plural and lowercase, the second is the Schema name, and the third is optional 
