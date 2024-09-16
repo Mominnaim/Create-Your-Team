@@ -12,7 +12,7 @@ const UserVerificationSchema = new Schema({
 //* If a third optional is given the data will be sent to that collection rather then the first argument.
 const UserVerification = mongoose.model('UserVerification', UserVerificationSchema)
 
-module.exports = UserVerificationSchema;
+module.exports = UserVerification;
 
 
 // There are some things I want to touch up on like 

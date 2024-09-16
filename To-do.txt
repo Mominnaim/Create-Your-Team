@@ -5,3 +5,11 @@ August 31st
 September 8th 
 -> Change all the api routes into asynchronous functions
 
+September 16th 
+-> Finish the login page
+-> Get the verfied page working
+"            res.direct(`/user/verified/error=true&message=${message}`)
+                ^
+
+TypeError: res.direct is not a function"
+
